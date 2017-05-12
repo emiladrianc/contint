@@ -16,7 +16,7 @@ node {
 
 		stage ('Code coverage'){
 			bat 'mvn cobertura:cobertura'
-			publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: '/target/site/cobertura', reportFiles: 'index.html', reportName: 'UnitTests Report'])
+			publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'target/site/cobertura/', reportFiles: 'index.html', reportName: 'UnitTests Report'])
 		}		
 		
 		notify('Success')
