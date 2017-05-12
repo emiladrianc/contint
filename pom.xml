@@ -16,6 +16,9 @@
 		<version.junit>4.11</version.junit>
 		<version.mockito>1.9.5</version.mockito>
 		<version.cobertura>2.7</version.cobertura>
+		<version.emma>1.0-alpha-3</version.emma>
+
+		<version.sonarqube>2.7.1</version.sonarqube>
 		<!-- Maven Plugins -->
 		<version.maven.jar.plugin>2.4</version.maven.jar.plugin>
 		<version.maven.war.plugin>2.4</version.maven.war.plugin>
@@ -30,6 +33,10 @@
 		<!-- Project -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- SonarQube -->
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		
 	</properties>
 
 	<dependencies>
@@ -127,7 +134,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -141,7 +148,13 @@
 					</formats>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${version.sonarqube}</version>
+				
+			</plugin>
 		</plugins>
-	</reporting> 
-	
+	</reporting>
+
 </project>
