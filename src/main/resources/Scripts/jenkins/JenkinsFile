@@ -2,15 +2,17 @@ node {
 
 	try{
 
-		stage 'Check Out'
-		checkout scm
+		stage ('Check Out'){
+			checkout scm
+		}
 		
-		stage 'Build'
-		sh 'mvn clean compile'
-		
+		stage (Build'){
+			bat 'mvn clean compile'
+		}
 
-		stage 'Run tests'
-		sh 'mvn test'
+		stage ('Run tests'){
+			bat 'mvn test'
+		}
 
 		notify('Success')
 	}
