@@ -6,6 +6,7 @@
 	<version>0.0.2-SNAPSHOT</version>
 
 	<properties>
+	
 		<version.java>1.7</version.java>
 		<!-- Java EE -->
 		<version.validation-api>1.1.0.Final</version.validation-api>
@@ -32,6 +33,7 @@
 		<version.maven.exec.plugin>1.2.1</version.maven.exec.plugin>
 		<version.maven.assembly.plugin>2.4</version.maven.assembly.plugin>
 		<version.maven.surefire.version>2.18.1</version.maven.surefire.version>
+		<version.maven.version.plugin>2.3</version.maven.version.plugin>
 		<!-- Project -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -43,7 +45,7 @@
         
         <!-- Nexus -->
         <nexus.server.ssl.url>http://localhost:8081/nexus</nexus.server.ssl.url>
-		
+				
 	</properties>
 
 	<dependencies>
@@ -146,9 +148,17 @@
 			   <configuration>
 			      <serverId>nexus</serverId>
 			      <nexusUrl>${nexus.server.ssl.url}</nexusUrl>
-			      <skipStaging>true</skipStaging>			      
+			      <skipStaging>true</skipStaging>					      	      
 			   </configuration>
 			</plugin>
+			 <plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>versions-maven-plugin</artifactId>
+		        <version>${version.maven.version.plugin}</version>
+		        <configuration>
+		        <newVersion>0.0.${BUILD_NUMBER}-SNAPSHOT</newVersion>
+		        </configuration>
+		      </plugin>
 		</plugins>
 	</build>
 

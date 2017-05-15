@@ -31,8 +31,17 @@ node {
             bat 'mvn sonar:sonar'
 			}
     	}
+
+		stage('Change version'){
+		
+			bat 'mvn versions:set'
+			
+			bat 'mvn versions:commit'
+		}
 		
 		stage('Deploy artifact to nexus'){
+		
+			
 			bat 'mvn clean deploy'
 		}
 		
