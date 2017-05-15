@@ -32,6 +32,14 @@ node {
 			}
     	}
 		
+		stage('Generate package'){
+			bat 'mvn clean package'
+		}
+		
+		stage ('Store package in nexus') {
+			nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\com.cont.int-0.0.1-SNAPSHOT.jar']], mavenCoordinate: [artifactId: 'com.company.project.contint', groupId: 'maven-contint', packaging: 'jar', version: '0.0.1']]]
+		}
+		
 		notify('Success')
 	}
 	catch(err){

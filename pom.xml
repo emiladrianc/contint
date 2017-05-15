@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>maven-contint</groupId>
-	<artifactId>com.cont.int</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>com.company.project.contint</artifactId>
+	<version>0.0.1</version>
 
 	<properties>
 		<version.java>1.7</version.java>
@@ -158,5 +158,18 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snaptshots</id>
+			<name>Snaptshots</name>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
