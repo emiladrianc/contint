@@ -29,6 +29,7 @@ node {
 		stage('SonarQube analysis') {
             withSonarQubeEnv('SonarQube Server') {            
             bat 'mvn sonar:sonar'
+			}
     	}
 		
 		notify('Success')
