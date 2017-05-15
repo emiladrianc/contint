@@ -32,12 +32,8 @@ node {
 			}
     	}
 		
-		stage('Generate package'){
-			bat 'mvn clean package'
-		}
-		
-		stage ('Store package in nexus') {
-			nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\com.company.project.contint-0.0.1.jar']], mavenCoordinate: [artifactId: 'com.company.project.contint', groupId: 'maven-contint', packaging: 'jar', version: '0.0.1']]]
+		stage('Deploy artifact to nexus'){
+			bat 'mvn clean deploy'
 		}
 		
 		notify('Success')
