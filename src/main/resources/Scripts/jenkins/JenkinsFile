@@ -25,6 +25,12 @@ node {
 				reportName: 'UnitTests Report'])
 		}		
 		
+		
+		stage('SonarQube analysis') {
+            withSonarQubeEnv('SonarQube Server') {            
+            bat 'mvn sonar:sonar'
+    	}
+		
 		notify('Success')
 	}
 	catch(err){
