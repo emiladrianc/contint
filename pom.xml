@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>maven-contint</groupId>
 	<artifactId>com.company.project.contint</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<properties>
 		<version.java>1.7</version.java>
@@ -19,6 +19,8 @@
 		<version.emma>1.0-alpha-3</version.emma>
 
 		<version.sonarqube>2.7.1</version.sonarqube>
+		<version.nexus>1.5.1</version.nexus>
+				
 		<!-- Maven Plugins -->
 		<version.maven.jar.plugin>2.4</version.maven.jar.plugin>
 		<version.maven.war.plugin>2.4</version.maven.war.plugin>
@@ -38,6 +40,9 @@
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.login>admin</sonar.login>
         <sonar.password>admin</sonar.password>
+        
+        <!-- Nexus -->
+        <nexus.server.ssl.url>http://localhost:8081/nexus</nexus.server.ssl.url>
 		
 	</properties>
 
@@ -134,6 +139,16 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${version.maven.surefire.version}</version>
 			</plugin>
+			<plugin>
+			   <groupId>org.sonatype.plugins</groupId>
+			   <artifactId>nexus-staging-maven-plugin</artifactId>
+			   <version>${version.nexus}</version>			  
+			   <configuration>
+			      <serverId>nexus</serverId>
+			      <nexusUrl>${nexus.server.ssl.url}</nexusUrl>
+			      <skipStaging>true</skipStaging>			      
+			   </configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -161,14 +176,14 @@
 
 	<distributionManagement>
 		<repository>
-			<id>releases</id>
+			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+			<url>${nexus.server.ssl.url}/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>snaptshots</id>
+			<id>nexus</id>
 			<name>Snaptshots</name>
-			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+			<url>${nexus.server.ssl.url}/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
