@@ -23,7 +23,7 @@ public class CountryRepositoryTest {
 		new CountryRepositoryImpl(null);
 	}
 
-	@Test()
+	@Test
 	public void TestConstructorNotNullFactory() {
 
 		EntityManager mockEntityManager = Mockito.mock(EntityManager.class);

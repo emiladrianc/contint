@@ -47,5 +47,17 @@ public class CountryTest {
 		_country.setCode(_code);
 		Assert.assertTrue(_code.equals(_country.getCode()));
 	}		  
-	
+
+	@Test
+	public void TestSetExternalId()
+	{
+		Country country = new Country();
+		
+		country.setExternalId();
+				
+		Assert.assertNotNull(country.getExternalId());
+		Assert.assertFalse(country.getExternalId().equals(""));
+		
+	}		  
+
 }

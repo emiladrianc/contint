@@ -54,4 +54,16 @@ public class LanguageTest {
 		Assert.assertTrue(_nativeName.equals(_language.getNativeName()));
 	}	
 	
+	@Test
+	public void TestSetExternalId()
+	{
+		Language language = new Language();
+		
+		language.setExternalId();
+				
+		Assert.assertNotNull(language.getExternalId());
+		Assert.assertFalse(language.getExternalId().equals(""));
+		
+	}		  
+
 }
