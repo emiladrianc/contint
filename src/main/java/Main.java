@@ -8,12 +8,9 @@ import javax.persistence.Persistence;
 
 import persistance.CountryRepository;
 import persistance.CountryRepositoryImpl;
-import persistance.CustomerRepository;
-import persistance.CustomerRepositoryImpl;
 import persistance.LanguageRepository;
 import persistance.LanguageRepositoryImpl;
 import persistance.model.Country;
-import persistance.model.Customer;
 
 public class Main {
 
@@ -29,8 +26,7 @@ public class Main {
 		Country country = countryRepository.createCountry(1L,  UUID.randomUUID().toString(), "United states", "US");
 		
 		LanguageRepository languageRepository = new LanguageRepositoryImpl(entityManager); 
-		
-		
+		languageRepository.createLanguage(2L, UUID.randomUUID().toString(), "English", "En", "english");		
 		
 		/*
 		

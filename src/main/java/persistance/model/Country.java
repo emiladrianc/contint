@@ -1,32 +1,35 @@
 package persistance.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import persistance.listeners.CountryListener;
+import persistance.listeners.ValidateCountryListener;
 
 @Entity
-@EntityListeners(CountryListener.class)
+@EntityListeners(ValidateCountryListener.class)
 @Table(name = "Country")
 public class Country {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name ="Id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Id")
 	private long _id;
-	
-	@Column(name ="ExternalId", length = 36, nullable = false, unique = true, updatable = false)	
+
+	@Column(name = "ExternalId", length = 36, nullable = false, unique = true, updatable = false)
 	private String _externalId;
-	
-	@Column(name="Code", nullable = false, length = 50)
+
+	@Column(name = "Code", nullable = false, length = 50)
 	private String _code;
-	
-	@Column(name="Name", length = 50, nullable = false)
+
+	@Column(name = "Name", length = 50, nullable = false)
 	private String _name;
 
 	public long getId() {
@@ -59,6 +62,11 @@ public class Country {
 
 	public void setName(String _name) {
 		this._name = _name;
-	} 
-		
+	}
+
+	@PrePersist
+	public void setExternalId() {
+		setExternalId(UUID.randomUUID().toString());
+	}
+
 }

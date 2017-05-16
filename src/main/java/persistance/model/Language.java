@@ -1,17 +1,20 @@
 package persistance.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import persistance.listeners.CountryListener;
+import persistance.listeners.ValidateLanguageListener;
 
 @Entity
-@EntityListeners(CountryListener.class)
+@EntityListeners(ValidateLanguageListener.class)
 @Table(name = "Language")
 public class Language {
 
@@ -70,6 +73,11 @@ public class Language {
 
 	public void setNativeName(String _nativeName) {
 		this._nativeName = _nativeName;
+	}
+	
+	@PrePersist
+	public void setExternalId() {
+		setExternalId(UUID.randomUUID().toString());
 	}
 
 }
