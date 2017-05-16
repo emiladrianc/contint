@@ -1,28 +1,32 @@
 package persistance.model;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import persistance.listeners.CountryListener;
 
 @Entity
+@EntityListeners(CountryListener.class)
+@Table(name = "Country")
 public class Country {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name ="Id")
 	private long _id;
 	
-	@GeneratedValue
-	@Column(columnDefinition="uuid", updatable = false)
-	private UUID _externalId;
+	@Column(name ="ExternalId", length = 36, nullable = false, unique = true, updatable = false)	
+	private String _externalId;
 	
-	@Column(nullable = false, length = 50)
+	@Column(name="Code", nullable = false, length = 50)
 	private String _code;
 	
-	@Column(length = 50)
+	@Column(name="Name", length = 50, nullable = false)
 	private String _name;
 
 	public long getId() {
@@ -33,11 +37,11 @@ public class Country {
 		this._id = _id;
 	}
 
-	public UUID getExternalId() {
+	public String getExternalId() {
 		return _externalId;
 	}
 
-	public void setExternalId(UUID _externalId) {
+	public void setExternalId(String _externalId) {
 		this._externalId = _externalId;
 	}
 

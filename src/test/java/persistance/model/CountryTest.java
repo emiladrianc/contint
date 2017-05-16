@@ -11,7 +11,7 @@ public class CountryTest {
 
 	private Country _country;
 	private Long _id = 1L;
-	private UUID _externalId = UUID.randomUUID(); 
+	private String _externalId = UUID.randomUUID().toString(); 
 	private String _code = "US";
 	private String _name = "English";
 		

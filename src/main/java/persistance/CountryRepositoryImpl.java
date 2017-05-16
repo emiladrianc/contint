@@ -1,9 +1,7 @@
 package persistance;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 import persistance.model.Country;
 
@@ -20,10 +18,20 @@ public class CountryRepositoryImpl implements CountryRepository {
 		_entityTransaction = _entityManager.getTransaction();
 	}
 
-	@Override
-	public Country createCountry(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Country createCountry(Long id, String externalId, String name, String code) {
+		Country country = new Country();
+		country.setId(id);
+		country.setExternalId(externalId);
+		country.setName(name);
+		country.setCode(code);
+
+		_entityTransaction.begin();
+
+		_entityManager.persist(country);
+
+		_entityTransaction.commit();
+
+		return country;
 	}
 
 	@Override
@@ -39,27 +47,32 @@ public class CountryRepositoryImpl implements CountryRepository {
 	}
 
 	@Override
+	public Country findCountry(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void removeCountry(Long id) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void removeCountry(Country country) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void changeName(Long id, String name) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void changeName(Country country, String name) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }

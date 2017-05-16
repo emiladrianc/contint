@@ -1,0 +1,5 @@
+FROM postgres:9.6
+
+ENV POSTGRES_USER applicationUser
+ENV POSTGRES_PASSWORD applicationPass
+ENV POSTGRES_DB applicationDB

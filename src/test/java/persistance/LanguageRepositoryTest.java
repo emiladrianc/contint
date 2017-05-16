@@ -9,18 +9,19 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import persistance.model.Country;
+import persistance.model.Language;
 
-public class CountryRepositoryTest {
-
+public class LanguageRepositoryTest {
+	
 	private Long _id = 11L;
-	private String _name = "Country";
+	private String _name = "Language";
 	private String _code = "Code";
+	private String _nativeName = "LanguageNativeName";
 	private String _externalId = UUID.randomUUID().toString();
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestConstructorNullFactory() {
-		new CountryRepositoryImpl(null);
+		new LanguageRepositoryImpl(null);
 	}
 
 	@Test()
@@ -28,7 +29,7 @@ public class CountryRepositoryTest {
 
 		EntityManager mockEntityManager = Mockito.mock(EntityManager.class);
 
-		CountryRepositoryImpl repo = new CountryRepositoryImpl(mockEntityManager);
+		LanguageRepositoryImpl repo = new LanguageRepositoryImpl(mockEntityManager);
 		Assert.assertNotNull(repo);
 	}
 
@@ -39,15 +40,15 @@ public class CountryRepositoryTest {
 		
 		Mockito.when(mockEntityManager.getTransaction()).thenReturn(mockEntityTransaction);
 		
-		CountryRepositoryImpl repo = new CountryRepositoryImpl(mockEntityManager);
+		LanguageRepositoryImpl repo = new LanguageRepositoryImpl(mockEntityManager);
 
-		Country country = repo.createCountry(_id, _externalId, _name, _code);
+		Language languge = repo.createLanguage(_id, _externalId, _name, _code, _nativeName);
 
-		Assert.assertTrue(country.getId() == _id);
-		Assert.assertTrue(country.getExternalId().equals(_externalId));
-		Assert.assertTrue(country.getName().equals(_name));
-		Assert.assertTrue(country.getCode().equals(_code));
+		Assert.assertTrue(languge.getId() == _id);
+		Assert.assertTrue(languge.getExternalId().equals(_externalId));
+		Assert.assertTrue(languge.getName().equals(_name));
+		Assert.assertTrue(languge.getCode().equals(_code));
+		Assert.assertTrue(languge.getNativeName().equals(_nativeName));
 
 	}
-
 }
