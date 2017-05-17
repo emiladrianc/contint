@@ -9,44 +9,52 @@ import persistance.model.Country;
 
 public class CountryTest {
 
-	private Country _country;
-	private Long _id = 1L;
-	private String _externalId = UUID.randomUUID().toString(); 
-	private String _code = "US";
-	private String _name = "English";
+	private Country country;
+	private Long id = 1L;
+	private String externalId = UUID.randomUUID().toString(); 
+	private String code = "US";
+	private String name = "English";
+	private boolean isObsolete = true;
 		
 	public CountryTest()
 	{
-		_country = new Country();
+		country = new Country();
 	}
 	
 	@Test
 	public void TestSetAndGetId()
 	{
-		_country.setId(_id);
-		Assert.assertTrue(_id.equals(_country.getId()));
+		country.setId(id);
+		Assert.assertTrue(id.equals(country.getId()));
 	}
 	
 	@Test
 	public void TestSetAndGetExternalId()
 	{
-		_country.setExternalId(_externalId);
-		Assert.assertTrue(_externalId.equals(_country.getExternalId()));
+		country.setExternalId(externalId);
+		Assert.assertTrue(externalId.equals(country.getExternalId()));
 	}
 	
 	@Test
 	public void TestSetAndGetName()
 	{
-		_country.setName(_name);
-		Assert.assertTrue(_name.equals(_country.getName()));
+		country.setName(name);
+		Assert.assertTrue(name.equals(country.getName()));
 	}
 	
 	@Test
 	public void TestSetAndGetCode()
 	{
-		_country.setCode(_code);
-		Assert.assertTrue(_code.equals(_country.getCode()));
-	}		  
+		country.setCode(code);
+		Assert.assertTrue(code.equals(country.getCode()));
+	}
+	
+	@Test
+	public void TestSetAndGetIsObsolete()
+	{
+		country.setIsObsolete(isObsolete);
+		Assert.assertTrue(isObsolete == country.getIsObsolete());
+	}	
 
 	@Test
 	public void TestSetExternalId()

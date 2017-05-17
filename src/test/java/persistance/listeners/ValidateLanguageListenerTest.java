@@ -5,55 +5,64 @@ import org.junit.Test;
 import persistance.model.Language;
 
 public class ValidateLanguageListenerTest {
-	private Language _language = new Language();
+	private Language language = new Language();
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNameIsNull() {
-		_language.setName(null);
+		language.setName(null);
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNameIsEmpty() {
-		_language.setName("");
+		language.setName("");
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestCodeIsNull() {
-		_language.setName("Language");
-		_language.setCode(null);
+		language.setName("Language");
+		language.setCode(null);
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestCodeIsEmpty() {
-		_language.setName("Language");
-		_language.setCode("");
+		language.setName("Language");
+		language.setCode("");
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNativeNameIsNull() {
 
-		_language.setName("Language");
-		_language.setCode("Code");
+		language.setName("Language");
+		language.setCode("Code");
 
-		_language.setNativeName(null);
+		language.setNativeName(null);
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNativeNameIsEmpty() {
-		_language.setName("Language");
-		_language.setCode("Code");
-		_language.setNativeName("");
+		language.setName("Language");
+		language.setCode("Code");
+		language.setNativeName("");
 
-		new ValidateLanguageListener().validate(_language);
+		new ValidateLanguageListener().validate(language);
+	}
+	
+	@Test
+	public void Test() {
+		language.setName("Language");
+		language.setCode("Code");
+		language.setNativeName("NativeName");
+
+		new ValidateLanguageListener().validate(language);
 	}
 }

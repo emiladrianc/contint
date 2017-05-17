@@ -6,36 +6,44 @@ import persistance.model.Country;
 
 public class ValidateCountryListenerTest {
 
-	private Country _country = new Country();
+	private Country country = new Country();
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNameIsNull() {
-		_country.setName(null);
+		country.setName(null);
 
-		new ValidateCountryListener().validate(_country);
+		new ValidateCountryListener().validate(country);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestNameIsEmpty() {
-		_country.setName("");
+		country.setName("");
 
-		new ValidateCountryListener().validate(_country);
+		new ValidateCountryListener().validate(country);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestCodeIsNull() {
-		_country.setName("Country");
-		_country.setCode(null);
+		country.setName("Country");
+		country.setCode(null);
 
-		new ValidateCountryListener().validate(_country);
+		new ValidateCountryListener().validate(country);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestCodeIsEmpty() {
-		_country.setName("Country");
-		_country.setCode("");
+		country.setName("Country");
+		country.setCode("");
 
-		new ValidateCountryListener().validate(_country);
+		new ValidateCountryListener().validate(country);
+	}
+
+	@Test
+	public void Test() {
+		country.setName("Country");
+		country.setCode("Code");
+
+		new ValidateCountryListener().validate(country);
 	}
 
 }

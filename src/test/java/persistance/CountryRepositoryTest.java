@@ -13,10 +13,10 @@ import persistance.model.Country;
 
 public class CountryRepositoryTest {
 
-	private Long _id = 11L;
-	private String _name = "Country";
-	private String _code = "Code";
-	private String _externalId = UUID.randomUUID().toString();
+	private Long id = 11L;
+	private String name = "Country";
+	private String code = "Code";
+	private String externalId = UUID.randomUUID().toString();
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestConstructorNullFactory() {
@@ -41,12 +41,12 @@ public class CountryRepositoryTest {
 		
 		CountryRepositoryImpl repo = new CountryRepositoryImpl(mockEntityManager);
 
-		Country country = repo.createCountry(_id, _externalId, _name, _code);
+		Country country = repo.createCountry(id, externalId, name, code);
 
-		Assert.assertTrue(country.getId() == _id);
-		Assert.assertTrue(country.getExternalId().equals(_externalId));
-		Assert.assertTrue(country.getName().equals(_name));
-		Assert.assertTrue(country.getCode().equals(_code));
+		Assert.assertTrue(country.getId() == id);
+		Assert.assertTrue(country.getExternalId().equals(externalId));
+		Assert.assertTrue(country.getName().equals(name));
+		Assert.assertTrue(country.getCode().equals(code));
 
 	}
 

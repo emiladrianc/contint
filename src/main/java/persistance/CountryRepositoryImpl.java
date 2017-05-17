@@ -7,15 +7,15 @@ import persistance.model.Country;
 
 public class CountryRepositoryImpl implements CountryRepository {
 
-	private EntityManager _entityManager;
-	private EntityTransaction _entityTransaction;
+	private EntityManager entityManager;
+	private EntityTransaction entityTransaction;
 
 	public CountryRepositoryImpl(EntityManager entityManager) {
 		if (entityManager == null)
 			throw new IllegalArgumentException("Parameter cannnot be null: entityManager");
 		
-		_entityManager = entityManager;
-		_entityTransaction = _entityManager.getTransaction();
+		this.entityManager = entityManager;
+		this.entityTransaction = this.entityManager.getTransaction();
 	}
 
 	public Country createCountry(Long id, String externalId, String name, String code) {
@@ -25,11 +25,11 @@ public class CountryRepositoryImpl implements CountryRepository {
 		country.setName(name);
 		country.setCode(code);
 
-		_entityTransaction.begin();
+		entityTransaction.begin();
 
-		_entityManager.persist(country);
+		entityManager.persist(country);
 
-		_entityTransaction.commit();
+		entityTransaction.commit();
 
 		return country;
 	}

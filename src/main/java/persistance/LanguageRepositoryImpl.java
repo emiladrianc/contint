@@ -7,15 +7,15 @@ import persistance.model.Language;
 
 public class LanguageRepositoryImpl implements LanguageRepository {
 	
-	private EntityManager _entityManager;
-	private EntityTransaction _entityTransaction;
+	private EntityManager entityManager;
+	private EntityTransaction entityTransaction;
 
 	public LanguageRepositoryImpl(EntityManager entityManager) {
 		if (entityManager == null)
 			throw new IllegalArgumentException("Parameter cannnot be null: entityManager");
 
-		_entityManager = entityManager;
-		_entityTransaction = _entityManager.getTransaction();
+		this.entityManager = entityManager;
+		this.entityTransaction = this.entityManager.getTransaction();
 	}
 	
 	public Language createLanguage(Long id, String externalId, String name, String code, String nativeName) {
@@ -26,11 +26,11 @@ public class LanguageRepositoryImpl implements LanguageRepository {
 		language.setCode(code);
 		language.setNativeName(nativeName);
 				
-		_entityTransaction.begin();
+		this.entityTransaction.begin();
 
-		_entityManager.persist(language);
+		this.entityManager.persist(language);
 
-		_entityTransaction.commit();
+		this.entityTransaction.commit();
 
 		return language;
 	}

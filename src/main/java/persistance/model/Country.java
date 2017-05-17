@@ -21,47 +21,58 @@ public class Country {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	private long _id;
+	private long id;
 
 	@Column(name = "ExternalId", length = 36, nullable = false, unique = true, updatable = false)
-	private String _externalId;
+	private String externalId;
 
 	@Column(name = "Code", nullable = false, length = 50)
-	private String _code;
+	private String code;
 
 	@Column(name = "Name", length = 50, nullable = false)
-	private String _name;
+	private String name;
+
+	@Column(name = "IsObsolete", nullable = false)
+	private boolean isObsolete;
 
 	public long getId() {
-		return _id;
+		return id;
 	}
 
-	public void setId(long _id) {
-		this._id = _id;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getExternalId() {
-		return _externalId;
+		return externalId;
 	}
 
-	public void setExternalId(String _externalId) {
-		this._externalId = _externalId;
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
 	}
 
 	public String getCode() {
-		return _code;
+		return code;
 	}
 
-	public void setCode(String _code) {
-		this._code = _code;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {
-		return _name;
+		return name;
 	}
 
-	public void setName(String _name) {
-		this._name = _name;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean getIsObsolete() {
+		return isObsolete;
+	}
+
+	public void setIsObsolete(boolean isObsolete) {
+		this.isObsolete = isObsolete;
 	}
 
 	@PrePersist

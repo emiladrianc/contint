@@ -13,11 +13,11 @@ import persistance.model.Language;
 
 public class LanguageRepositoryTest {
 	
-	private Long _id = 11L;
-	private String _name = "Language";
-	private String _code = "Code";
-	private String _nativeName = "LanguageNativeName";
-	private String _externalId = UUID.randomUUID().toString();
+	private Long id = 11L;
+	private String name = "Language";
+	private String code = "Code";
+	private String nativeName = "LanguageNativeName";
+	private String externalId = UUID.randomUUID().toString();
 
 	@Test(expected = IllegalArgumentException.class)
 	public void TestConstructorNullFactory() {
@@ -42,13 +42,13 @@ public class LanguageRepositoryTest {
 		
 		LanguageRepositoryImpl repo = new LanguageRepositoryImpl(mockEntityManager);
 
-		Language languge = repo.createLanguage(_id, _externalId, _name, _code, _nativeName);
+		Language languge = repo.createLanguage(id, externalId, name, code, nativeName);
 
-		Assert.assertTrue(languge.getId() == _id);
-		Assert.assertTrue(languge.getExternalId().equals(_externalId));
-		Assert.assertTrue(languge.getName().equals(_name));
-		Assert.assertTrue(languge.getCode().equals(_code));
-		Assert.assertTrue(languge.getNativeName().equals(_nativeName));
+		Assert.assertTrue(languge.getId() == id);
+		Assert.assertTrue(languge.getExternalId().equals(externalId));
+		Assert.assertTrue(languge.getName().equals(name));
+		Assert.assertTrue(languge.getCode().equals(code));
+		Assert.assertTrue(languge.getNativeName().equals(nativeName));
 
 	}
 }
